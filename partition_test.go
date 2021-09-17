@@ -15,3 +15,12 @@ func BenchmarkPartitionx(b *testing.B) {
 		_ = partitionX(s, 1)
 	}
 }
+
+func BenchmarkRanges(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		ranges := Ranges(len(s), 1)
+		for _, r := range ranges {
+			do(s[r.From:r.To])
+		}
+	}
+}

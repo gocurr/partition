@@ -1,19 +1,14 @@
 package partition
 
-import (
-	"fmt"
-	"testing"
-)
-
-var nums = []int{1, 2, 3, 4, 5, 6, 7, 8, 9}
+import "testing"
 
 func TestRanges(t *testing.T) {
-	ranges := Ranges(len(nums), 1)
+	ranges := Ranges(len(s), 1)
 	for _, r := range ranges {
-		do(nums[r.From:r.To])
+		do(s[r.From:r.To])
 	}
 }
 
-func do(nums []int) {
-	fmt.Println(nums)
+func do(nums []interface{}) {
+	//fmt.Println(nums)
 }

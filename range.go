@@ -19,14 +19,14 @@ func Ranges(size, partSize int) []Range {
 		n++
 	}
 
-	var parts = make([]Range, n)
+	var ranges = make([]Range, n)
 	from := 0
 	to := partSize
-	for i := range parts {
-		// make subslice
-		parts[i] = Range{From: from, To: to}
+	for i := range ranges {
+		// fill ranges with range
+		ranges[i] = Range{From: from, To: to}
 
-		// prepare last item in parts aka parts[:-1],
+		// prepare last item in ranges aka ranges[:-1],
 		// if remainder is bigger than 0,
 		// that means: len(data[:-1]) == remainder
 		if i == n-2 && remainder > 0 {
@@ -35,5 +35,5 @@ func Ranges(size, partSize int) []Range {
 		from, to = to, to+partSize
 	}
 
-	return parts
+	return ranges
 }
