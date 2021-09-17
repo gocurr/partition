@@ -1,27 +1,23 @@
 package partition
 
 import (
+	"fmt"
 	"testing"
 )
 
-var total = 1000000
-var partSize = 1
+var partSize = 6
 
 func TestPartition(t *testing.T) {
-	for i := 0; i < total; i++ {
-		parts := Partition(s, partSize)
-		for _, p := range parts {
-			do(p)
-		}
+	parts := Partition(s, partSize)
+	for _, p := range parts {
+		do(p)
 	}
 }
 
 func TestPartitionx(t *testing.T) {
-	for i := 0; i < total; i++ {
-		parts := partitionX(s, partSize)
-		for _, p := range parts {
-			do(p)
-		}
+	parts := partitionX(s, partSize)
+	for _, p := range parts {
+		do(p)
 	}
 }
 
@@ -33,5 +29,5 @@ func TestRanges(t *testing.T) {
 }
 
 func do(nums []interface{}) {
-	//fmt.Println(nums)
+	fmt.Println(nums)
 }
