@@ -14,7 +14,7 @@ import "github.com/gocurr/partition"
 
 It requires Go 1.11 or later due to usage of Go Modules.
 
-- To start a crontab:
+- Usage:
 
 ```go
 s := []interface{}{1, 2, 3, 4, 5, 6, 7}
