@@ -1,26 +1,37 @@
 package partition
 
-import "testing"
+import (
+	"testing"
+)
 
-var s = []interface{}{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+var total = 1000000
+var partSize = 1
 
-func BenchmarkPartition(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		_ = Partition(s, 1)
-	}
-}
-
-func BenchmarkPartitionx(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		_ = partitionX(s, 1)
-	}
-}
-
-func BenchmarkRanges(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		ranges := Ranges(len(s), 1)
-		for _, r := range ranges {
-			do(s[r.From:r.To])
+func TestPartition(t *testing.T) {
+	for i := 0; i < total; i++ {
+		parts := Partition(s, partSize)
+		for _, p := range parts {
+			do(p)
 		}
 	}
+}
+
+func TestPartitionx(t *testing.T) {
+	for i := 0; i < total; i++ {
+		parts := partitionX(s, partSize)
+		for _, p := range parts {
+			do(p)
+		}
+	}
+}
+
+func TestRanges(t *testing.T) {
+	ranges := Ranges(len(s), partSize)
+	for _, r := range ranges {
+		do(s[r.From:r.To])
+	}
+}
+
+func do(nums []interface{}) {
+	//fmt.Println(nums)
 }
