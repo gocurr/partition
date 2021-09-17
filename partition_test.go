@@ -5,7 +5,9 @@ import (
 	"testing"
 )
 
-var partSize = 6
+var s = []interface{}{1, 2, 3, 4, 5, 6, 7}
+
+var partSize = 2
 
 func TestPartition(t *testing.T) {
 	parts := Partition(s, partSize)
