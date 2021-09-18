@@ -32,7 +32,7 @@ func Ranges(size, partSize int) []Range {
 
 	// prepare last item in ranges aka ranges[:-1],
 	// if remainder is bigger than 0,
-	// that means: len(data[:-1]) == remainder
+	// that means: len(ranges[:-1]) == remainder
 	if nn > n {
 		ranges[i] = Range{From: from, To: from + remainder}
 	}
