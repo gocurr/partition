@@ -30,6 +30,13 @@ func TestRanges(t *testing.T) {
 	}
 }
 
+func TestRangesN(t *testing.T) {
+	ranges := RangesN(len(s), 5)
+	for _, r := range ranges {
+		do(s[r.From:r.To])
+	}
+}
+
 func do(nums []interface{}) {
 	fmt.Println(nums)
 }

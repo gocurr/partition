@@ -4,6 +4,7 @@ type Range struct {
 	From, To int
 }
 
+// Ranges return the part-range slice, divided by part-size
 func Ranges(size, partSize int) []Range {
 	if partSize < 1 {
 		panic("partSize must be greater than 0")
@@ -38,4 +39,19 @@ func Ranges(size, partSize int) []Range {
 	}
 
 	return ranges
+}
+
+// RangesN return the part-range slice, divided by n part
+func RangesN(size, n int) []Range {
+	if n < 1 {
+		panic("n must be greater than 0")
+	}
+
+	partSize := size / n
+	remainder := size % n
+	if remainder > 0 {
+		partSize++
+	}
+
+	return Ranges(size, partSize)
 }
