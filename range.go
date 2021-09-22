@@ -12,17 +12,17 @@ var (
 )
 
 // Ranges return the part-range slice, divided by part-size
-func Ranges(size, partSize int) ([]Range, error) {
+func Ranges(size, partSize int) []Range {
 	if size < 0 {
-		return nil, negativeErr
+		panic(negativeErr)
 	}
 
 	if partSize < 1 {
-		return nil, lessThanOneErr
+		panic(lessThanOneErr)
 	}
 
 	if partSize >= size {
-		return []Range{{From: 0, To: size}}, nil
+		return []Range{{From: 0, To: size}}
 	}
 
 	remainder := size % partSize
@@ -49,13 +49,13 @@ func Ranges(size, partSize int) ([]Range, error) {
 		ranges[i] = Range{From: from, To: from + remainder}
 	}
 
-	return ranges, nil
+	return ranges
 }
 
 // RangesN return the part-range slice, divided by n part
-func RangesN(size, n int) ([]Range, error) {
+func RangesN(size, n int) []Range {
 	if n < 1 {
-		return nil, lessThanOneErr
+		panic(lessThanOneErr)
 	}
 
 	partSize := size / n
