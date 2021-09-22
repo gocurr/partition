@@ -24,19 +24,29 @@ func TestPartitionx(t *testing.T) {
 }
 
 func TestRanges(t *testing.T) {
-	ranges := Ranges(len(s), partSize)
+	s = nil
+	ranges, err := Ranges(len(s), partSize)
+	if err != nil {
+		panic(err)
+	}
 	for _, r := range ranges {
-		do(s[r.From:r.To])
+		nums := s[r.From:r.To]
+		do(nums)
 	}
 }
 
 func TestRangesN(t *testing.T) {
-	ranges := RangesN(len(s), 5)
+	ranges, err := RangesN(len(s), 5)
+	if err != nil {
+		panic(err)
+	}
 	for _, r := range ranges {
 		do(s[r.From:r.To])
 	}
 }
 
 func do(nums []interface{}) {
-	fmt.Println(nums)
+	for _, num := range nums {
+		fmt.Println(num)
+	}
 }

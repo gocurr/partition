@@ -16,6 +16,6 @@ func BenchmarkPartitionx(b *testing.B) {
 
 func BenchmarkRanges(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		_ = Ranges(len(s), 1)
+		_, _ = Ranges(len(s), 1)
 	}
 }
