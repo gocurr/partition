@@ -1,24 +1,18 @@
 package partition
 
-import "errors"
-
+// Range represents a From-To pair
 type Range struct {
 	From, To int
 }
 
-var (
-	negativeErr    = errors.New("size must be non-negative")
-	lessThanOneErr = errors.New("partSize must be greater than 0")
-)
-
-// Ranges return the part-range slice, divided by part-size
+// Ranges returns Range slice which is divided by partSize
 func Ranges(size, partSize int) []Range {
 	if size < 0 {
-		panic(negativeErr)
+		panic("size must be non-negative")
 	}
 
 	if partSize < 1 {
-		panic(lessThanOneErr)
+		panic("partSize must be greater than 0")
 	}
 
 	if partSize >= size {
@@ -52,10 +46,10 @@ func Ranges(size, partSize int) []Range {
 	return ranges
 }
 
-// RangesN return the part-range slice, divided by n part
+// RangesN returns Range slice which is divided by n
 func RangesN(size, n int) []Range {
 	if n < 1 {
-		panic(lessThanOneErr)
+		panic("n must be greater than 0")
 	}
 
 	partSize := size / n
